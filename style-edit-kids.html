@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Villgus Clothing Mall | Fashion, Accessories & Lifestyle</title>
+  <meta name="description" content="Shop the latest trends at Villgus Clothing Mall. Explore men's, women's, and kids' fashion, accessories, fragrances, and lifestyle products. Worldwide delivery available.">
+  <meta name="keywords" content="Villgus Clothing Mall, online clothing store, women's fashion, men's fashion, kids clothing, accessories, fragrances, fashion sale, luxury fashion online">
+
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="canonical" href="https://www.villgusclothing.com/" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+  <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css" />
+
+  <style>
+    :root{
+      --red:#e31919;
+      --border:#eaeaea;
+      --text:#222;
+      --muted:#777;
+      --bg:#ffffff;
+      --shadow:0 2px 6px rgba(0,0,0,.08);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#fff}
+.filter-bar{
+      display:flex; gap:12px; align-items:center; justify-content:center;
+      padding:12px 16px; border-bottom:1px solid var(--border); background:#fff; flex-wrap:wrap;
+    }
+    .filter{
+      min-width:150px;
+      border:1px solid var(--border); padding:6px 10px; font-size:14px; background:#fff; outline:none;
+    }
+    
+.bag-btn {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+  padding: 5px 5px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 4px; /* remove round shape */
+  display: inline-block;
+}
+
+.bag-btn:hover {
+  background: #000;
+  color: #fff;
+}
+.offer{
+font-family: emoji;
+font-size: 20px;
+
+}
+.kids-section{
+  background-color: #6E0000;
+color: #eaeaea;
+  display: flex;
+  justify-content: center;
+}
+    /* PRODUCT GRID */
+    .wrap{max-width:1200px;margin:0 auto}
+    .products{
+      display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+      gap:22px; padding:22px 16px;
+    }
+    .card{
+      border:1px solid var(--border); background:var(--bg); box-shadow:var(--shadow);
+      display:flex; flex-direction:column;
+    }
+    .card-img{
+      position:relative;
+      width:100%; height:300px; overflow:hidden;
+    }
+    .card-img img{
+      width:100%; height:100%; object-fit:scale-down; display:block; transition:opacity .4s ease;
+      position:absolute; top:0; left:0;
+    }
+    .card-img .hover-img{opacity:0;}
+    .card-img:hover .hover-img{opacity:1;}
+    .card-img:hover img:first-child{opacity:0;}
+
+    .info{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 12px;
+    }
+    .price{
+      display:flex; align-items:center; gap:8px; font-weight:700; color:var(--red);
+    }
+    .old{color:var(--muted); text-decoration:line-through; font-weight:400; font-size:13px;}
+     /* Footer */
+    footer{ background:#222; color:#fff; padding:36px 16px 20px; }
+    .footer-container{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:28px; }
+    .footer-column{ flex:1; min-width:220px; }
+    .footer-column h4{ font-size:1rem; margin-bottom:12px; font-weight:700; border-bottom:2px solid var(--accent); display:inline-block; padding-bottom:4px; }
+    .footer-column p, .footer-column a{ color:#ccc; font-size:.92rem; text-decoration:none; display:block; margin-bottom:8px; }
+    .footer-column a:hover{ color:#fff; }
+    .newsletter{ display:flex; margin-top:10px; }
+    .newsletter input{ padding:8px; border:none; outline:none; flex:1; border-radius:4px 0 0 4px; }
+    .newsletter button{ padding:4px 10px; background:var(--accent); color:#fff; border:none; border-radius:0 4px 4px 0; cursor:pointer; }
+    .newsletter button:hover{ background:#c0392b; }
+    .footer-bottom{ margin-top:24px; border-top:1px solid #444; padding-top:12px; display:flex; flex-wrap:wrap; justify-content:space-between; font-size:.85rem; color:#ccc; }
+    .payment-icons i{ font-size:1.5rem; margin-left:10px; color:#fff; }
+  </style>
+</head>
+<body>
+
+<div class="kids-section">
+<h1 class="offer ">Limited Time: FREE Delivery on All Orders — Use FREEDOM25</h1>
+
+</div>
+
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <select class="filter" id="fabric-filter">
+      <option value="">Fabric</option><option>Cotton</option><option>Silk</option><option>Linen</option><option>Wool</option>
+    </select>
+    <select class="filter" id="price-filter">
+      <option value="">Price</option><option value="u1500">Under Rs. 1,500</option><option value="1500-5000">Rs. 1,500 – 5,000</option><option value="a5000">Above Rs. 5,000</option>
+    </select>
+    <select class="filter" id="size-filter">
+      <option value="">Size</option><option>S</option><option>M</option><option>L</option><option>XL</option>
+    </select>
+    <select class="filter" id="color-filter">
+      <option value="">Color</option><option>Black</option><option>White</option><option>Red</option><option>Blue</option>
+    </select>
+    <select class="filter" id="brand-filter">
+      <option value="">Brands</option><option>Nishat</option><option>Khaadi</option><option>Sapphire</option><option>Limelight</option>
+    </select>
+    <select class="filter" id="season-filter">
+      <option value="">Season</option><option>Summer</option><option>Winter</option><option>Spring</option><option>Autumn</option>
+    </select>
+    <select class="filter" id="occasion-filter">
+      <option value="">Occasion</option><option>Casual</option><option>Formal</option><option>Wedding</option><option>Party</option>
+    </select>
+    <select class="filter" id="discount-filter">
+      <option value="">Discount</option><option>10% Off</option><option>20% Off</option><option>50% Off</option>
+    </select>
+  </div>
+
+
+
+
+  <!-- PRODUCTS -->
+  <div class="wrap">
+    <div class="products">
+
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK-1009-PEACH-02_1370x.webp" alt="Golden Kurta">
+          <img src="./KGKK-1009-PEACH-01.webp" class="hover-img" alt="Golden Kurta Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 2,185</span><span class="old">PKR 3,299</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK-1096-Yellow-02.webp" alt="Red Kurta">
+          <img src="./KGKK-1096-Yellow-01.webp" class="hover-img" alt="Red Kurta Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 3,500</span><span class="old">PKR 5,500</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK-1153-PINK-02_1370x.webp" alt="Kurta 3">
+          <img src="./KGKK-1153-PINK-01.webp" class="hover-img" alt="Kurta 3 Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 2,199</span><span class="old">PKR 3,199</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK-1147-YELLOW-02_1370x.webp" alt="Kurta 4">
+          <img src="./KGKK-1147-YELLOW-03.webp" class="hover-img" alt="Kurta 4 Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 2,499</span><span class="old">PKR 3,799</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK-1141-MAGENTA-02_1370x.webp" alt="Kurta 5">
+          <img src="./KGKK-1141-MAGENTA-01.jfif" class="hover-img" alt="Kurta 5 Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 2,350</span><span class="old">PKR 3,200</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK-1138-Green-02_1370x.webp" alt="Kurta 6">
+          <img src="./KGKK-1138-Green-01.webp" class="hover-img" alt="Kurta 6 Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 2,150</span><span class="old">PKR 3,050</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK-1137-L-Green-02_1370x.webp" alt="Kurta 7">
+          <img src="./KGKK-1137-L-Green-01.webp" class="hover-img" alt="Kurta 7 Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 3,000</span><span class="old">PKR 4,299</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK-1134-Blue-02_1370x.webp" alt="Kurta 8">
+          <img src="./KGKK-1134-Blue-01.webp" class="hover-img" alt="Kurta 8 Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 2,250</span><span class="old">PKR 3,099</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Card 9 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK-1120-Red-02_1370x.webp" alt="Kurta 9">
+          <img src="./KGKK-1120-Red-01.webp" class="hover-img" alt="Kurta 9 Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 2,600</span><span class="old">PKR 3,700</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Card 10 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK-0961YELLOWRS4690-02_01a62265-eac6-418c-a36d-8be1f8303be2_1370x.webp" alt="Kurta 10">
+          <img src="./KGKK-0961YELLOWRS4690-01_acee3931-1068-499a-8d56-8bdaafb426a4.webp" class="hover-img" alt="Kurta 10 Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 2,799</span><span class="old">PKR 3,999</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Card 11 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK-0952-Green-4490-02_1370x.webp" alt="Kurta 11">
+          <img src="./KGKK-0952-Green-4490-01.webp" class="hover-img" alt="Kurta 11 Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 2,199</span><span class="old">PKR 3,199</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Card 12 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK-1040-Red-02_1370x.webp" alt="Kurta 12">
+          <img src="./KGKK-1040-Red-03.webp" class="hover-img" alt="Kurta 12 Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 2,299</span><span class="old">PKR 3,499</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Card 13 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK-0771-Yellow-02_1370x.webp" alt="Kurta 13">
+          <img src="./KGKK-0771-Yellow-01.webp" class="hover-img" alt="Kurta 13 Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 2,750</span><span class="old">PKR 3,899</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Card 14 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK0770YELLOWRS-2490-02_1370x.webp" alt="Kurta 14">
+          <img src="./KGKK0770YELLOWRS-2490-01.webp" class="hover-img" alt="Kurta 14 Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 2,400</span><span class="old">PKR 3,600</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Card 15 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK-0834-PINK-03_1370x.webp" alt="Kurta 15">
+          <img src="./KGKK-0834-PINK-01.webp" class="hover-img" alt="Kurta 15 Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 2,100</span><span class="old">PKR 3,000</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Card 16 -->
+      <div class="card">
+        <div class="card-img">
+          <img src="./KGKK-1007-PEACH-02_1370x.webp" alt="Kurta 16">
+          <img src="./KGKK-1007-PEACH-01.webp" class="hover-img" alt="Kurta 16 Hover">
+        </div>
+        <div class="info">
+          <div class="price"><span>PKR 2,550</span><span class="old">PKR 3,799</span></div>
+          <button class="bag-btn add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+ <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>Contact Us</h4>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indus</p>
+        <p><i class="fa fa-envelope"></i> wecare@villgusonline.pk</p>
+        <p><i class="fa fa-phone"></i> +92(0)42 111-738-245</p>
+      </div>
+      <div class="footer-column">
+        <h4>Customer Care</h4>
+        <a href="#">Exchange & Return Policy</a>
+        <a href="#">FAQs</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="footer-column">
+        <h4>Information</h4>
+        <a href="#">About Us</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Payments</a>
+        <a href="#">Store Locator</a>
+        <a href="#">Fabric Glossary</a>
+        <a href="#">Blogs</a>
+      </div>
+      <div class="footer-column">
+        <h4>Newsletter Signup</h4>
+        <p>Subscribe to our Newsletter for Exclusive Updates</p>
+        <form class="newsletter" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+          <input type="email" placeholder="Your email address" aria-label="Email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© Made by Vishah Gull</p>
+      <div class="payment-icons" aria-label="Payment methods">
+        <i class="fa fa-cc-visa" aria-hidden="true"></i>
+        <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
+        <i class="fa fa-cc-paypal" aria-hidden="true"></i>
+        <i class="fa fa-cc-amex" aria-hidden="true"></i>
+      </div>
+    </div>
+  </footer>
+  <!-- JS (single jQuery import) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="js/owl.carousel.min.js" defer></script>
+
+</body>
+</html>
+

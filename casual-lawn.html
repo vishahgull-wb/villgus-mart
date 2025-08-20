@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Product Modal Demo</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; background:#f8f8f8; }
+  .festive-cloth {
+    background-color: #111; color: #f8f8f8;
+    width: 100%; height: 100px;
+    display:flex; justify-content:center; align-items:center; text-align:center;
+  }
+  .festive-cloth h1 { margin:0; padding:20px 0; font-size:30px; }
+  .filter-bar {
+    display:flex; gap:12px; align-items:center; justify-content:center;
+    padding:12px 16px; border-bottom:1px solid #ccc; background:#fff; flex-wrap:wrap;
+  }
+  .filter { min-width:150px; border:1px solid #ccc; padding:6px 10px; font-size:14px; background:#fff; outline:none; }
+
+  .grid {
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+    gap:20px; padding:20px;
+  }
+  .product {
+    position:relative; cursor:pointer; overflow:hidden; background:#fff;
+    border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:10px;
+  }
+  .product img { width:100%; display:block; transition:opacity 0.3s ease; }
+  .product img.hover { position:absolute; top:0; left:0; opacity:0; }
+  .product:hover img.hover { opacity:1; }
+
+  /* Modal Styles */
+  .modal-one {
+    display:none; position:fixed; inset:0;
+    background:rgba(0,0,0,0.6);
+    justify-content:center; align-items:center; z-index:1000;
+  }
+  .modal-content {
+    background:#fff; max-width:600px; width:90%; border-radius:16px;
+    overflow-y:auto; max-height:90vh; padding:20px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.2); animation:fadeIn 0.3s ease;
+  }
+   footer{ background:#222; color:#fff; padding:36px 16px 20px; }
+    .footer-container{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:28px; }
+    .footer-column{ flex:1; min-width:220px; }
+    .footer-column h4{ font-size:1rem; margin-bottom:12px; font-weight:700; border-bottom:2px solid var(--accent); display:inline-block; padding-bottom:4px; }
+    .footer-column p, .footer-column a{ color:#ccc; font-size:.92rem; text-decoration:none; display:block; margin-bottom:8px; }
+    .footer-column a:hover{ color:#fff; }
+    .newsletter{ display:flex; margin-top:10px; }
+    .newsletter input{ padding:8px; border:none; outline:none; flex:1; border-radius:4px 0 0 4px; }
+    .newsletter button{ padding:8px 12px; background:var(--accent); color:#fff; border:none; border-radius:0 4px 4px 0; cursor:pointer; }
+    .newsletter button:hover{ background:#c0392b; }
+    .footer-bottom{ margin-top:24px; border-top:1px solid #444; padding-top:12px; display:flex; flex-wrap:wrap; justify-content:space-between; font-size:.85rem; color:#ccc; }
+    .payment-icons i{ font-size:1.5rem; margin-left:10px; color:#fff; }
+    .wear{
+      display: block;
+    font-size: 16px;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+  @keyframes fadeIn { from {opacity:0; transform: translateY(20px);} to {opacity:1; transform: translateY(0);} }
+  .close { float:right; font-size:24px; cursor:pointer; color:#666; }
+  .price { font-size:18px; font-weight:bold; margin:8px 0; }
+  .old-price { text-decoration:line-through; color:#999; margin-left:8px; font-weight:normal; }
+  .discount { color:red; font-size:14px; margin-left:8px; }
+  .sizes button { margin:5px; padding:6px 12px; border:1px solid #ccc; border-radius:8px; background:#f9f9f9; cursor:pointer; }
+  .sizes button:hover { background:#ddd; }
+  .actions button { width:48%; padding:12px; margin-top:12px; border:none; border-radius:8px; cursor:pointer; font-size:16px; }
+  .add-cart { background:#111; color:#fff; }
+  .buy-now { background:#ff4a4a; color:#fff; }
+  .note { font-size:13px; margin-top:12px; color:#555; }
+</style>
+</head>
+<body>
+
+<div class="festive-cloth">
+  <h1>Casual Lawn Wear Collection</h1>
+</div>
+
+<div class="filter-bar">
+  <select class="filter" id="fabric-filter">
+    <option value="">Fabric</option><option>Cotton</option><option>Silk</option><option>Linen</option><option>Wool</option>
+  </select>
+  <select class="filter" id="price-filter">
+    <option value="">Price</option><option value="u1500">Under Rs. 1,500</option><option value="1500-5000">Rs. 1,500 – 5,000</option><option value="a5000">Above Rs. 5,000</option>
+  </select>
+  <select class="filter" id="size-filter">
+    <option value="">Size</option><option>S</option><option>M</option><option>L</option><option>XL</option>
+  </select>
+  <select class="filter" id="color-filter">
+    <option value="">Color</option><option>Black</option><option>White</option><option>Red</option><option>Blue</option>
+  </select>
+  <select class="filter" id="brand-filter">
+    <option value="">Brands</option><option>Nishat</option><option>Khaadi</option><option>Sapphire</option><option>Limelight</option>
+  </select>
+  <select class="filter" id="season-filter">
+    <option value="">Season</option><option>Summer</option><option>Winter</option><option>Spring</option><option>Autumn</option>
+  </select>
+  <select class="filter" id="occasion-filter">
+    <option value="">Occasion</option><option>Casual</option><option>Formal</option><option>Wedding</option><option>Party</option>
+  </select>
+  <select class="filter" id="discount-filter">
+    <option value="">Discount</option><option>10% Off</option><option>20% Off</option><option>50% Off</option>
+  </select>
+</div>
+
+<div class="grid">
+  <!-- Card 1 -->
+  <div class="product" 
+       data-title="Cambric Block Printed Shirt KST-22052-A"
+       data-price="2,580"
+       data-old-price="4,299"
+       data-discount="-40% OFF"
+       data-description="Elegant and comfortable cambric block printed shirt."
+       onclick="openModal(this)">
+    <img src="./media_image-174168532433721_50b0784c-422b-4172-a171-f44297c562da.webp" alt="Product">
+    <h2 class="wear">Cambric Block Printed Shirt KST-22052-A</h2>
+    <p>PKR 2,580</p>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="product" 
+       data-title="Silk Fancy Shirt KST-33011-B"
+       data-price="3,200"
+       data-old-price="4,800"
+       data-discount="-33% OFF"
+       data-description="Stylish silk shirt perfect for parties."
+       onclick="openModal(this)">
+    <img src="./D-02BFront_A_720x-174635833436889_89ec4e49-9190-4114-aaf8-90b69abca192.webp" alt="Product">
+    <h2 class="wear">Silk Fancy Shirt KST-33011-B</h2>
+    <p>PKR 3,200</p>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="product" 
+       data-title="Linen Casual Shirt LST-44123-C"
+       data-price="1,800"
+       data-old-price="2,500"
+       data-discount="-28% OFF"
+       data-description="Lightweight linen shirt ideal for summer outings."
+       onclick="openModal(this)">
+    <img src="./imageye___-_D-9Side_B_720x-174747976849863_7b811715-46a1-4ef8-8aac-362572a4a8b1.webp" alt="Product">
+    <h2 class="wear">Linen Casual Shirt LST-44123-C</h2>
+    <p>PKR 1,800</p>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="product" 
+       data-title="Cotton Summer Kurta CST-55234-D"
+       data-price="2,100"
+       data-old-price="2,900"
+       data-discount="-28% OFF"
+       data-description="Breathable cotton kurta for daily wear."
+       onclick="openModal(this)">
+    <img src="./cropped_image-174047468888896_dd216e6c-87df-4078-9667-f9651f8ab33d.webp" alt="Product">
+    <h2 class="wear">Cotton Summer Kurta CST-55234-D</h2>
+    <p class="wear">PKR 2,100</p>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="product" 
+       data-title="Party Ready Silk Shirt PST-66245-E"
+       data-price="4,500"
+       data-old-price="6,000"
+       data-discount="-25% OFF"
+       data-description="Premium silk shirt perfect for weddings and parties."
+       onclick="openModal(this)">
+    <img src="./D-03BFront_A_720x-174635980133925_cc857c2a-892c-4264-ade8-57afa9d88652.webp" alt="Product">
+    <h2 class="wear">Party Ready Silk Shirt PST-66245-E</h2>
+    <p class="wear">PKR 4,500</p>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="product" 
+       data-title="Winter Wool Shirt WST-77256-F"
+       data-price="3,800"
+       data-old-price="5,200"
+       data-discount="-27% OFF"
+       data-description="Warm wool shirt for winter evenings."
+       onclick="openModal(this)">
+    <img src="./D-10BFront_A_720x-174626090434672_b35fbf8e-c574-4c8e-837e-c91019e053e8.webp" alt="Product">
+    <h2 class="wear">Winter Wool Shirt WST-77256-F</h2>
+    <p class="wear">PKR 3,800</p>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="product" 
+       data-title="Formal White Cotton Shirt FST-88267-G"
+       data-price="2,900"
+       data-old-price="4,100"
+       data-discount="-29% OFF"
+       data-description="Classic white cotton shirt suitable for office."
+       onclick="openModal(this)">
+    <img src="./media_image-174168706447202_93efb5cf-1460-41c0-aae0-c12f5dc183de.webp" alt="Product">
+    <h2 class="wear">Formal White Cotton Shirt FST-88267-G</h2>
+    <p>PKR 2,900</p>
+  </div>
+
+  <!-- Card 8 -->
+  <div class="product" 
+       data-title="Red Festive Kurta RFT-99278-H"
+       data-price="3,600"
+       data-old-price="5,000"
+       data-discount="-28% OFF"
+       data-description="Bright red festive kurta for special occasions."
+       onclick="openModal(this)">
+    <img src="./cropped_image-173602291192806_4387f9de-7600-40f8-aa79-a6f8c55f9e1c.webp" alt="Product">
+    <h2 class="wear">Red Festive Kurta RFT-99278-H</h2>
+    <p>PKR 3,600</p>
+  </div>
+
+  <!-- Card 9 -->
+  <div class="product" 
+       data-title="Blue Casual Shirt BST-10389-I"
+       data-price="1,950"
+       data-old-price="2,600"
+       data-discount="-25% OFF"
+       data-description="Cool blue casual shirt for daily wear."
+       onclick="openModal(this)">
+    <img src="./cropped_image-174047366623947_92a30fb3-f9a0-4035-8cdd-a0556da1bd63.webp" alt="Product">
+    <h2 class="wear">Blue Casual Shirt BST-10389-I</h2>
+    <p>PKR 1,950</p>
+  </div>
+
+  <!-- Card 10 -->
+  <div class="product" 
+       data-title="Sapphire Party Kurta SPT-21490-J"
+       data-price="4,200"
+       data-old-price="5,600"
+       data-discount="-25% OFF"
+       data-description="Elegant kurta in sapphire color for parties."
+       onclick="openModal(this)">
+    <img src="./MB-EF23-122-White_20465d10-027d-495e-bcb3-9f0c0781da75.webp" alt="Product">
+    <h2 class="wear">Sapphire Party Kurta SPT-21490-J</h2>
+    <p>PKR 4,200</p>
+  </div>
+
+  <!-- Card 11 -->
+  <div class="product" 
+       data-title="Casual Linen Shirt CLT-32501-K"
+       data-price="2,100"
+       data-old-price="2,900"
+       data-discount="-27% OFF"
+       data-description="Comfortable linen shirt for summer casual wear."
+       onclick="openModal(this)">
+    <img src="./cropped_image-173175900698066_1b2dda4c-32e5-448c-aa54-ac1591e06437.webp" alt="Product">
+    <h2 class="wear">Casual Linen Shirt CLT-32501-K</h2>
+    <p>PKR 2,100</p>
+  </div>
+
+  <!-- Card 12 -->
+  <div class="product" 
+       data-title="Limelight Formal Shirt LFT-43612-L"
+       data-price="3,000"
+       data-old-price="4,200"
+       data-discount="-28% OFF"
+       data-description="Stylish Limelight formal shirt for office and meetings."
+       onclick="openModal(this)">
+    <img src="./cropped_image-173175979445423_0e2e75cd-3b23-44fb-bb61-9129a04b32f3.webp" alt="Product">
+    <h2 class="wear">Limelight Formal Shirt LFT-43612-L</h2>
+    <p>PKR 3,000</p>
+  </div>
+
+  <!-- Card 13 -->
+  <div class="product" 
+       data-title="Winter Casual Wool Shirt WCS-54723-M"
+       data-price="3,500"
+       data-old-price="4,800"
+       data-discount="-27% OFF"
+       data-description="Warm and cozy wool shirt for winter."
+       onclick="openModal(this)">
+    <img src="./cropped_image-173037334928788_23d8d606-c9cb-4175-bed5-fda07f7af653.webp" alt="Product">
+    <h2 class="wear">Winter Casual Wool Shirt WCS-54723-M</h2>
+    <p>PKR 3,500</p>
+  </div>
+
+  <!-- Card 14 -->
+  <div class="product" 
+       data-title="Festive Green Kurta FGT-65834-N"
+       data-price="3,700"
+       data-old-price="5,200"
+       data-discount="-29% OFF"
+       data-description="Festive green kurta for special occasions."
+       onclick="openModal(this)">
+    <img src="./media_image-174186104612204_f7188efd-2075-48f2-8d47-24c369a4278c.webp" alt="Product">
+    <h2 class="wear">Festive Green Kurta FGT-65834-N</h2>
+    <p>PKR 3,700</p>
+  </div>
+
+  <!-- Card 15 -->
+  <div class="product" 
+       data-title="Cotton Summer Shirt CST-76945-O"
+       data-price="2,000"
+       data-old-price="2,800"
+       data-discount="-29% OFF"
+       data-description="Cool and lightweight cotton summer shirt."
+       onclick="openModal(this)">
+    <img src="./cropped_image-173550138287800_15f7a99c-fe67-4893-a0b2-3558884933b9.webp" alt="Product">
+    <h2 class="wear">Cotton Summer Shirt CST-76945-O</h2>
+    <p>PKR 2,000</p>
+  </div>
+
+  <!-- Card 16 -->
+  <div class="product" 
+       data-title="Elegant Party Silk Shirt EPS-88056-P"
+       data-price="4,800"
+       data-old-price="6,400"
+       data-discount="-25% OFF"
+       data-description="Elegant silk shirt for party wear."
+       onclick="openModal(this)">
+    <img src="./MB-F23-201-Black_8ee9d108-c371-4287-b695-d075a5bb8e5f.webp" alt="Product">
+    <h2 class="wear">Elegant Party Silk Shirt EPS-88056-P</h2>
+    <p>PKR 4,800</p>
+  </div>
+
+  <!-- Card 17 -->
+  <div class="product" 
+       data-title="Casual Blue Linen Shirt BLS-99167-Q"
+       data-price="2,200"
+       data-old-price="3,000"
+       data-discount="-27% OFF"
+       data-description="Blue linen shirt perfect for casual outings."
+       onclick="openModal(this)">
+    <img src="./MBEF2364Pink_40197979-2f28-4828-b2c3-e80518b773f3.webp" alt="Product">
+    <h2 class="wear">Casual Blue Linen Shirt BLS-99167-Q</h2>
+    <p>PKR 2,200</p>
+  </div>
+
+  <!-- Card 18 -->
+  <div class="product" 
+       data-title="Wedding Ready Kurta WRT-10278-R"
+       data-price="5,500"
+       data-old-price="7,500"
+       data-discount="-27% OFF"
+       data-description="Luxury kurta for weddings and formal events."
+       onclick="openModal(this)">
+    <img src="./mb-w22-324-green_0eb3c979-05c8-4e42-82c8-2d0dbab7e41d.webp" alt="Product">
+    <h2 class="wear">Wedding Ready Kurta WRT-10278-R</h2>
+    <p>PKR 5,500</p>
+  </div>
+
+  <!-- Card 19 -->
+  <div class="product" 
+       data-title="Red Summer Shirt RST-21389-S"
+       data-price="2,400"
+       data-old-price="3,200"
+       data-discount="-25% OFF"
+       data-description="Vibrant red shirt for summer casual wear."
+       onclick="openModal(this)">
+    <img src="./mb-w21-143-maroon_bf2b2dcb-cff7-4d67-bc46-1832b38fb49a.webp" alt="Product">
+    <h2 class="wear">Red Summer Shirt RST-21389-S</h2>
+    <p>PKR 2,400</p>
+  </div>
+
+  <!-- Card 20 -->
+  <div class="product" 
+       data-title="Formal White Silk Shirt FWS-32490-T"
+       data-price="4,100"
+       data-old-price="5,600"
+       data-discount="-27% OFF"
+       data-description="Formal silk shirt for professional occasions."
+       onclick="openModal(this)">
+    <img src="./BUTW22S021D_3233673f-f84b-4621-9820-f6e4bc5bce57.webp" alt="Product">
+    <h2 class="wear">Formal White Silk Shirt FWS-32490-T</h2>
+    <p>PKR 4,100</p>
+  </div>
+
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal-one" id="productModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3>Product Title</h3>
+    <div class="price">PKR 0 <span class="old-price">PKR 0</span> <span class="discount">0% OFF</span></div>
+    <p>Pay in 3 Installments</p>
+
+    <div class="sizes">
+      <strong>Sizes:</strong><br>
+      <button>XS</button>
+      <button>S</button>
+      <button>M</button>
+      <button>L</button>
+      <button>XL</button>
+      <a href="#">Size Chart</a>
+    </div>
+
+    <div class="actions">
+      <button class="add-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
+    </div>
+
+    <p class="note">Note: Color of the article may vary from the uploaded picture</p>
+
+    <h3>Product Description</h3>
+    <p>Description goes here...</p>
+
+    <h3>Leave A Review</h3>
+    <textarea rows="3" style="width:100%;border-radius:8px;border:1px solid #ccc;padding:8px;"></textarea>
+    <button style="margin-top:10px;padding:10px 20px;background:#111;color:#fff;border:none;border-radius:8px;cursor:pointer;">Submit</button>
+  </div>
+</div>
+ <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>Contact Us</h4>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indus</p>
+        <p><i class="fa fa-envelope"></i> wecare@villgusonline.pk</p>
+        <p><i class="fa fa-phone"></i> +92(0)42 111-738-245</p>
+      </div>
+      <div class="footer-column">
+        <h4>Customer Care</h4>
+        <a href="#">Exchange & Return Policy</a>
+        <a href="#">FAQs</a>
+        <a href="#">Contact Us</a>
+      </div>
+      <div class="footer-column">
+        <h4>Information</h4>
+        <a href="#">About Us</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Payments</a>
+        <a href="#">Store Locator</a>
+        <a href="#">Fabric Glossary</a>
+        <a href="#">Blogs</a>
+      </div>
+      <div class="footer-column">
+        <h4>Newsletter Signup</h4>
+        <p>Subscribe to our Newsletter for Exclusive Updates</p>
+        <form class="newsletter" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+          <input type="email" placeholder="Your email address" aria-label="Email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© Made by Vishah Gull</p>
+      <div class="payment-icons" aria-label="Payment methods">
+        <i class="fa fa-cc-visa" aria-hidden="true"></i>
+        <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
+        <i class="fa fa-cc-paypal" aria-hidden="true"></i>
+        <i class="fa fa-cc-amex" aria-hidden="true"></i>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  function openModal(product) {
+    const modal = document.getElementById("productModal");
+    modal.style.display = "flex";
+
+    // Fill modal with data from clicked product
+    modal.querySelector("h3").textContent = product.dataset.title;
+    modal.querySelector(".price").innerHTML = `PKR ${product.dataset.price} <span class="old-price">PKR ${product.dataset.oldPrice}</span> <span class="discount">${product.dataset.discount}</span>`;
+    modal.querySelector(".modal-content p:nth-of-type(2)").textContent = product.dataset.description;
+  }
+
+  function closeModal() {
+    document.getElementById("productModal").style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    let modal = document.getElementById("productModal");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>

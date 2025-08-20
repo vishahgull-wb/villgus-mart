@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Title & Meta Description (SEO) -->
+  <title>Villgus Clothing Mall | Fashion, Accessories & Lifestyle</title>
+  <meta name="description" content="Shop the latest trends at Villgus Clothing Mall. Explore men's, women's, and kids' fashion, accessories, fragrances, and lifestyle products. Worldwide delivery available.">
+  <meta name="keywords" content="Villgus Clothing Mall, online clothing store, women's fashion, men's fashion, kids clothing, accessories, fragrances, fashion sale, luxury fashion online">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.png" type="image/png">
+
+  <!-- Canonical URL (Avoid duplicate content) -->
+  <link rel="canonical" href="https://www.villgusclothing.com/" />
+
+  <!-- Open Graph for Social Sharing -->
+  <meta property="og:title" content="Villgus Clothing Mall | Shop Fashion & Lifestyle Online" />
+  <meta property="og:description" content="Discover the best in fashion at Villgus Clothing Mall. From everyday essentials to luxury styles — shop now." />
+  <meta property="og:image" content="https://www.villgusclothing.com/images/og-banner.jpg" />
+  <meta property="og:url" content="https://www.villgusclothing.com/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Villgus Clothing Mall – Fashion, Accessories & More" />
+  <meta name="twitter:description" content="Explore Villgus Clothing Mall's latest collections. Stylish, affordable, and delivered to your door." />
+  <meta name="twitter:image" content="https://www.villgusclothing.com/images/og-banner.jpg" />
+
+  <!-- Schema.org Structured Data (Google Rich Snippets) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Villgus Clothing Mall",
+    "image": "https://www.villgusclothing.com/images/og-banner.jpg",
+    "@id": "https://www.villgusclothing.com",
+    "url": "https://www.villgusclothing.com",
+    "telephone": "+44 20 7946 0998",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "123 London High Street",
+      "addressLocality": "London",
+      "addressRegion": "England",
+      "postalCode": "W1A 1AA",
+      "addressCountry": "GB"
+    },
+    "department": [
+      { "@type": "DepartmentStore", "name": "Women's Clothing" },
+      { "@type": "DepartmentStore", "name": "Men's Clothing" },
+      { "@type": "DepartmentStore", "name": "Kids' Clothing" },
+      { "@type": "DepartmentStore", "name": "Accessories" },
+      { "@type": "DepartmentStore", "name": "Fragrances" }
+    ],
+    "priceRange": "££",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "10:00",
+        "closes": "22:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "12:00",
+        "closes": "20:00"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Fonts & CSS Frameworks -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/owl.carousel.min.css" />
+  <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+  <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #000;
+      color: #f5e0d3;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 40px 0 20px 0;
+      font-size: 2.8rem;
+    }
+
+    .container {
+      width: 95%;
+      margin: auto;
+          margin-top: 42px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .product-card {
+      position: relative;
+      background-color: #111;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.4s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(245,224,211,0.3);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 20px 20px 0 0;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 15px 20px;
+      text-align: center;
+    }
+
+    .product-info h3 {
+      margin: 10px 0;
+      font-size: 1.2rem;
+    }
+
+    .product-info p {
+      margin: 5px 0 15px 0;
+      font-size: 1rem;
+    }
+
+    .add-cart {
+      background-color: #f5e0d3;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .add-cart:hover {
+      background-color: #e0c8b0;
+    }
+
+    /* Modal for large image view */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 15px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      color: #f5e0d3;
+      font-size: 2.5rem;
+      cursor: pointer;
+    }
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 40px 30px 20px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin-top: 70px;
+    }
+
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .footer-column h4 {
+      font-size: 1rem;
+      margin-bottom: 15px;
+      font-weight: bold;
+      border-bottom: 2px solid #e74c3c;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      color: #ccc;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+
+    .footer-column a:hover {
+      color: #fff;
+    }
+
+    /* Newsletter input */
+    .newsletter {
+      display: flex;
+      margin-top: 10px;
+    }
+
+    .newsletter input {
+      padding: 8px;
+      border: none;
+      outline: none;
+      flex: 1;
+      border-radius: 4px 0 0 4px;
+    }
+
+    .newsletter button {
+      padding: 0px 2px;
+      background: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .newsletter button:hover {
+      background: #c0392b;
+    }
+
+    /* Bottom bar */
+    .footer-bottom {
+      margin-top: 30px;
+      border-top: 1px solid #444;
+      padding-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #ccc;
+    }
+   .filter-bar{
+      display:flex; gap:12px; align-items:center; justify-content:center;
+      padding:12px 16px; border-bottom:1px solid var(--border); background:#fff; flex-wrap:wrap;
+    }
+    .filter{
+      min-width:150px;
+      border:1px solid var(--border); padding:6px 10px; font-size:14px; background:#fff; outline:none;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.8);}
+      to {opacity: 1; transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Organza Dresses Collection</h1>
+
+        <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <select class="filter" id="fabric-filter">
+      <option value="">Fabric</option><option>Cotton</option><option>Silk</option><option>Linen</option><option>Wool</option>
+    </select>
+    <select class="filter" id="price-filter">
+      <option value="">Price</option><option value="u1500">Under Rs. 1,500</option><option value="1500-5000">Rs. 1,500 – 5,000</option><option value="a5000">Above Rs. 5,000</option>
+    </select>
+    <select class="filter" id="size-filter">
+      <option value="">Size</option><option>S</option><option>M</option><option>L</option><option>XL</option>
+    </select>
+    <select class="filter" id="color-filter">
+      <option value="">Color</option><option>Black</option><option>White</option><option>Red</option><option>Blue</option>
+    </select>
+    <select class="filter" id="brand-filter">
+      <option value="">Brands</option><option>Nishat</option><option>Khaadi</option><option>Sapphire</option><option>Limelight</option>
+    </select>
+    <select class="filter" id="season-filter">
+      <option value="">Season</option><option>Summer</option><option>Winter</option><option>Spring</option><option>Autumn</option>
+    </select>
+    <select class="filter" id="occasion-filter">
+      <option value="">Occasion</option><option>Casual</option><option>Formal</option><option>Wedding</option><option>Party</option>
+    </select>
+    <select class="filter" id="discount-filter">
+      <option value="">Discount</option><option>10% Off</option><option>20% Off</option><option>50% Off</option>
+    </select>
+  </div>
+    <div class="container">
+    <div class="product-grid">
+      <!-- Example Product Card -->
+      <div class="product-card">
+        <img src="./photo-1733470381591-c5dfb9df3c3d.avif" alt="Organza Dress 1" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>ZEENAT– 3PC ORGANZA,LAWN& PAPER COTTON LUXURY PRET</h3>
+          <p>Rs. 12,500</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-18977059.jpg" alt="Organza Dress 2" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>OZEENAT– 3PC ORGANZA,LAWN& PAPER COTTON LUXURY PRET</h3>
+          <p>Rs. 13,200</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-18977057.jpg" alt="Organza Dress 3" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>ZEENAT– 3PC ORGANZA,LAWN& PAPER COTTON LUXURY PRET</h3>
+          <p>Rs. 11,800</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19281547.jpg" alt="Organza Dress 4" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>ZEENAT– 3PC ORGANZA,LAWN& PAPER COTTON LUXURY PRET</h3>
+          <p>Rs. 12,900</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19790223.jpg" alt="Organza Dress 5" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>ZEENAT– 3PC ORGANZA,LAWN& PAPER COTTON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-31323262.jpg" alt="Organza Dress 6" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>OZEENAT– 3PC ORGANZA,LAWN& PAPER COTTON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19248024.jpg" alt="Organza Dress 7" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>ZEENAT– 3PC ORGANZA,LAWN& PAPER COTTON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19401523.jpg" alt="Organza Dress 8" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>ZEENAT– 3PC ORGANZA,LAWN& PAPER COTTON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19401518.jpg" alt="Organza Dress 9" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>ZEENAT– 3PC ORGANZA,LAWN& PAPER COTTON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19589524.jpg" alt="Organza Dress 10" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>ZEENAT– 3PC ORGANZA,LAWN& PAPER COTTON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19281310.jpg" alt="Organza Dress 11" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>ZEENAT– 3PC ORGANZA,LAWN& PAPER COTTON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19221267.jpg" alt="Organza Dress 12" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>ZEENAT– 3PC ORGANZA,LAWN& PAPER COTTON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19956418.jpg" alt="Organza Dress 13" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19281272.jpg" alt="Organza Dress 14" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-31323178.jpg" alt="Organza Dress 15" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-18977055.jpg" alt="Organza Dress 16" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-18977034.jpg" alt="Organza Dress 17" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-31874432.jpg" alt="Organza Dress 18" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-31874438.jpg" alt="Organza Dress 19" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19221255.jpg" alt="Organza Dress 20" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19281283.jpg" alt="Organza Dress 21" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19956003.jpg" alt="Organza Dress 22" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19956424.jpg" alt="Organza Dress 23" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-27317246.jpg" alt="Organza Dress 24" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-28390566.jpg" alt="Organza Dress 25" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19589524.jpg" alt="Organza Dress 26" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET5</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-29413534.jpg" alt="Organza Dress 27" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="./pexels-dhanno-19511801.jpg" alt="Organza Dress 28" onclick="openModal(this.src)">
+        <div class="product-info">
+          <h3>BLUSH BLOOM – 3PC LAWN & CHIFFON LUXURY PRET</h3>
+          <p>Rs. 14,000</p>
+          <button class="add-cart">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Repeat for 10–20 dresses as needed -->
+    </div>
+  </div>
+
+  <!-- Modal for large image view -->
+  <div class="modal" id="imgModal">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <img id="modalImg" src="">
+  </div>
+
+  <div class="footer-container">
+    <!-- Contact -->
+    <div class="footer-column">
+      <h4>Contact Us</h4>
+      <p>Sapphire Retail Head Office 1.5-Km, Defence Road, Bhobtian Chowk,<br>Off Raiwind Road, Opposite University of Lahore, Lahore.</p>
+      <p><i class="fas fa-envelope"></i> wecare@sapphireonline.pk</p>
+      <p><i class="fas fa-phone"></i> +92(0)42 111-738-245</p>
+    </div>
+
+    <!-- Customer Care -->
+    <div class="footer-column">
+      <h4>Customer Care</h4>
+      <a href="#">Exchange & Return Policy</a>
+      <a href="#">FAQs</a>
+      <a href="#">Contact Us</a>
+    </div>
+
+    <!-- Information -->
+    <div class="footer-column">
+      <h4>Information</h4>
+      <a href="#">About Us</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Payments</a>
+      <a href="#">Store Locator</a>
+      <a href="#">Fabric Glossary</a>
+      <a href="#">Blogs</a>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="footer-column">
+      <h4>Newsletter Signup</h4>
+      <p>Subscribe to our Newsletter for Exclusive Updates</p>
+      <div class="newsletter">
+        <input type="email" placeholder="Your email address">
+        <button>Subscribe</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <p>© Made by Vishah Gull</p>
+    <div class="payment-icons">
+      <i class="fab fa-cc-visa"></i>
+      <i class="fab fa-cc-mastercard"></i>
+      <i class="fab fa-cc-paypal"></i>
+      <i class="fab fa-cc-amex"></i>
+    </div>
+  </div>
+</footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function openModal(src){
+      document.getElementById('imgModal').style.display = 'flex';
+      document.getElementById('modalImg').src = src;
+    }
+    function closeModal(){
+      document.getElementById('imgModal').style.display = 'none';
+    }
+
+    // === Add to Cart -> save to localStorage for clothing-brand.html ===
+    $(function(){
+      $('.add-cart').on('click', function(){
+        const $card = $(this).closest('.product-card');
+        const img = $card.find('img').attr('src');
+        const title = $card.find('h3').text().trim();
+        const priceText = $card.find('.product-info p').first().text().trim();
+        const numericPrice = parseInt(priceText.replace(/[^\d]/g, ''), 10) || 0;
+
+        // Build product object (kept simple for cart page)
+        const product = {
+          id: img + '|' + title,   // simple stable id
+          name: title,
+          img: img,
+          price: numericPrice,
+          qty: 1
+        };
+
+        // Load, merge, save
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const idx = cart.findIndex(it => it.id === product.id);
+        if (idx > -1) {
+          cart[idx].qty = (cart[idx].qty || 1) + 1;
+        } else {
+          cart.push(product);
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        alert('Added to cart: ' + product.name);
+        // If you want to navigate to the cart page automatically, uncomment:
+        // window.location.href = 'clothing-brand.html';
+      });
+    });
+  </script>
+</body>
+</html>
