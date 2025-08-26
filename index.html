@@ -286,29 +286,258 @@
 }
 
 .dropdown-menu {
-  margin-top: 0; /* removes gap */
+  margin-top: 0;
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 4px 15px;  gap:0px;
+    flex-wrap:wrap; gap:10px; 
+  }
+  .nav-menu {
+    gap: 6px;
+    padding: 0px 0px;
+}
+.nav-menu a {
+           font-weight: 500;
+        padding: 9px 5px;
+        font-size: 14px;
+}
+.owl-carousel .owl-nav button:hover {
+  background: none;
+}
+
+.owl-carousel .owl-nav button:hover span {
+  color:black;
+}      
+.sale-point .sub-text {
+    font-size: 12px;}
+.search-bar{ order:3; width:100%; max-width:none;  margin: 2px 0 0; }
+.search-bar input {
+    padding: 1px 9px;
+  }
+    header-icons a {
+    font-size: 14px;
+  }
+  .slide-wrapper {
+    gap: 7px;
+    padding: 10px 8px;
+  }
+  .slide-text h2 {
+    font-size: 17px;
+    margin-bottom: 3px;
+    margin-top: 15px;
+}
+.slide-text p {
+    color: #555;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+.shop {
+    width: 87px;
+    height: 30px;
+    font-size: 11px;
+}
+    .slide-image img {
+        height: 268px;
+    }
+    .owl-carousel .owl-item img {
+    display: block;
+    width: 90%;
+}
+.owl-carousel .owl-nav {
+    position: absolute;
+        top: 271px;
+        left: 60%;
+        gap: 0px;
+}
+.owl-carousel .owl-nav button span {
+    font-size: 14px;
+
+    line-height: 3;
+}
+
+    .sale-point .text {
+        font-size: 13px;
+    }
+
+.sale-point .text-click {
+   
+    padding: 3px 19px;
+    font-weight: 500;
+    border-radius: 24px;
+ 
+    font-size: 14px;
+}
+  .sale-point .sub-text {
+    margin-bottom: 7px;
+}
+.luxury-collection {
+    background: #000;
+    color: #f5e0d3;
+    padding: 1px 0 0px;
+}
+.luxury-collection h2 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 16px 0 17px;
+}
+    .logo {
+        font-size: 13px;
+    }
+    .search-bar button {
+    padding: 3px 6px;
+  }
+  .luxury-collection .product-grid {
+    grid-template-columns: repeat(4, 2fr) !important; /* 2 per line */
+         gap: 6px;
+        padding-left: 0px;
+        padding-right: 0px;
+          
+  }
+  .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+      .luxury-collection .product-image img {
+        height: 108px;
+        object-fit: cover;
+    }
+      .luxury-collection .product-info h3 {
+        font-size: 13px;
+    }
+    .luxury-collection .product-info p {
+        font-size: 13px;
+    }
+    .product-card{    height: 193px;}
+    .overlay-icons a{
+    width: 28px;
+    height: 30px;
+    }
+    .overlay-icons {
+    position: absolute;
+    top: 31%;
+    left: 55%;
+    }
+      .circle-grid {
+        --card-size: 60px;
+    }
+    .title {
+    margin-top: 4px;
+    font-weight: 600;
+    font-size: 10px;
+  }
+.prices {
+    margin-top: 0px;
+    gap: 0px;
+     flex-direction: column; /* stack vertically */
+    align-items: flex-start; 
+}
+    .price-new {
+        font-size: 9px;
+        margin-left: 12px;
+    }
+    .price-old {
+        font-size: 9px;
+        margin-left: 14px;
+    }
+    .circle-grid {
+    margin: 17px auto 4px;
+}
+  
+
+
+.small, small {
+    font-size: 11px;
+    font-weight: 600;
+}
+.product-title {
+    font-weight: 700;
+    margin-top: -3px;
+    font-size: 9px;
+}
+ .styled-section {
+    padding: 10px 5px;         /* minimal padding */
+    background-color: #F2CEB9;
+  }
+
+  .styled-section h2 {
+    font-size: 16px;           /* smaller title */
+    margin-bottom: 3px;
+  }
+
+  .styled-section p {
+    font-size: 11px;           /* smaller paragraph text */
+    margin: 2px 0;
+  }
+
+  .styled-section .card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 per row */
+    gap: 5px;                        /* very small spacing */
+    text-align: center;
+  }
+
+  .styled-section .card {
+    font-size: 11px;           /* squeeze card text */
+    padding: 4px;              /* tiny padding */
+    line-height: 1.2;          /* compact line spacing */
+  }
+
+
+
+
+  .sale-point {
+    text-align: center;
+    background-color: var(--skin);
+    padding: 6px 4px; /* a bit more padding for small screens */
+    color: #3e2723;
+    font-size: 0.9rem; /* adjust font size for mobile */
+  }
+    .sale-point .text {
+        font-size: 15px;
+    }
+    .footer-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 1px solid #444;
+    padding: 10px 0;
+    font-size: 15px;
+  }
+
+  .footer-content {
+    display: none;
+    padding: 5px 0 10px;
+  }
+
+  .footer-panel.active .footer-content {
+    display: block;
+  }
+
+  .toggle-icon {
+    font-size: 18px;
+    transition: transform 0.3s;
+  }
+
+  .footer-panel.active .toggle-icon {
+    transform: rotate(45deg); /* turns + into × */
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 
-    /* Responsive */
-    @media (max-width: 992px){
-      .slide-wrapper{ gap:20px; padding:24px 12px; }
-      .slide-text h2{ font-size:1.6rem; }
-      .logo{ font-size:1.3rem; }
-    }
-    @media (max-width: 768px){
-      header{ flex-wrap:wrap; gap:10px; }
-      .search-bar{ order:3; width:100%; max-width:none; margin:6px 0 0; }
-      .slide-wrapper, .slide-wrapper.reverse{ flex-direction:column; text-align:center; }
-      .circle-grid{ --card-size:140px; gap:16px; padding:0 10px; }
-      .nav-menu{ gap:12px; }
-    }
-    @media (max-width: 576px){
-      .circle-grid{ --card-size:120px; }
-      .sale-point .text{ font-size:22px; }
-      .sale-point .sub-text{ font-size:14px; }
-      .product-grid{ grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
-    }
+
+
   </style>
 </head>
 <body>
@@ -648,48 +877,59 @@
   </section>
 
   <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-column">
-        <h4>Contact Us</h4>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indus</p>
-        <p><i class="fa fa-envelope"></i> wecare@villgusonline.pk</p>
-        <p><i class="fa fa-phone"></i> +92(0)42 111-738-245</p>
+ <footer>
+  <div class="footer-container">
+    <div class="footer-column footer-panel">
+      <h4 class="footer-heading">Get In Touch <span class="toggle-icon">+</span></h4>
+      <div class="footer-content">
+        <p>123 London High Street</p>
+        <p>London, W1A 1AA</p>
+        <p>+44 20 7946 0998</p>
+        <p>support@villgus.com</p>
       </div>
-      <div class="footer-column">
-        <h4>Customer Care</h4>
-        <a href="#">Exchange & Return Policy</a>
-        <a href="#">FAQs</a>
-        <a href="#">Contact Us</a>
-      </div>
-      <div class="footer-column">
-        <h4>Information</h4>
+    </div>
+
+    <div class="footer-column footer-panel">
+      <h4 class="footer-heading">Information <span class="toggle-icon">+</span></h4>
+      <div class="footer-content">
         <a href="#">About Us</a>
         <a href="#">Privacy Policy</a>
-        <a href="#">Payments</a>
-        <a href="#">Store Locator</a>
-        <a href="#">Fabric Glossary</a>
-        <a href="#">Blogs</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">FAQs</a>
       </div>
-      <div class="footer-column">
-        <h4>Newsletter Signup</h4>
-        <p>Subscribe to our Newsletter for Exclusive Updates</p>
-        <form class="newsletter" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-          <input type="email" placeholder="Your email address" aria-label="Email address" required>
+    </div>
+
+    <div class="footer-column footer-panel">
+      <h4 class="footer-heading">Customer Services <span class="toggle-icon">+</span></h4>
+      <div class="footer-content">
+        <a href="#">Contact Us</a>
+        <a href="#">Shipping & Returns</a>
+        <a href="#">Order Tracking</a>
+        <a href="#">Size Guide</a>
+      </div>
+    </div>
+
+    <div class="footer-column footer-panel">
+      <h4 class="footer-heading">Newsletter Signup <span class="toggle-icon">+</span></h4>
+      <div class="footer-content">
+        <form class="newsletter">
+          <input type="email" placeholder="Enter your email">
           <button type="submit">Subscribe</button>
         </form>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© Made by Vishah Gull</p>
-      <div class="payment-icons" aria-label="Payment methods">
-        <i class="fa fa-cc-visa" aria-hidden="true"></i>
-        <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
-        <i class="fa fa-cc-paypal" aria-hidden="true"></i>
-        <i class="fa fa-cc-amex" aria-hidden="true"></i>
-      </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Villgus Clothing Mall. All rights reserved.</p>
+    <div class="payment-icons">
+      <i class="fab fa-cc-visa"></i>
+      <i class="fab fa-cc-mastercard"></i>
+      <i class="fab fa-cc-paypal"></i>
     </div>
-  </footer>
+  </div>
+</footer>
+
 
   <!-- JS (single jQuery import) -->
   <!-- jQuery -->
@@ -869,6 +1109,18 @@ window.addEventListener('load', function(){
   let savedCart = JSON.parse(localStorage.getItem("cart")) || [];
   renderCart(savedCart);
 
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const panels = document.querySelectorAll(".footer-panel");
+
+  panels.forEach(panel => {
+    const heading = panel.querySelector(".footer-heading");
+    heading.addEventListener("click", () => {
+      panel.classList.toggle("active");
+    });
+  });
 });
 </script>
 
