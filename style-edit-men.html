@@ -190,24 +190,204 @@ font-size: 20px;
 
 }
  /* Footer */
-    footer{ background:#222; color:#fff; padding:36px 16px 20px; }
-    .footer-container{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:28px; }
-    .footer-column{ flex:1; min-width:220px; }
-    .footer-column h4{ font-size:1rem; margin-bottom:12px; font-weight:700; border-bottom:2px solid var(--accent); display:inline-block; padding-bottom:4px; }
-    .footer-column p, .footer-column a{ color:#ccc; font-size:.92rem; text-decoration:none; display:block; margin-bottom:8px; }
-    .footer-column a:hover{ color:#fff; }
-    .newsletter{ display:flex; margin-top:10px; }
-    .newsletter input{ padding:8px; border:none; outline:none; flex:1; border-radius:4px 0 0 4px; }
-    .newsletter button{ padding:4px 10px; background:var(--accent); color:#fff; border:none; border-radius:0 4px 4px 0; cursor:pointer; }
-    .newsletter button:hover{ background:#c0392b; }
-    .footer-bottom{ margin-top:24px; border-top:1px solid #444; padding-top:12px; display:flex; flex-wrap:wrap; justify-content:space-between; font-size:.85rem; color:#ccc; }
-    .payment-icons i{ font-size:1.5rem; margin-left:10px; color:#fff; }
-   @media only screen and (max-width: 390px) {
-  .offer {
-    font-family: fantasy;
-    font-size: 14px;
-  }
+/* Footer Base */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: #111;
+  color: #fff;
+  padding: 40px 20px;
 }
+
+.footer-column {
+  flex: 1 1 200px;
+  margin: 10px;
+}
+
+.footer-heading {
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-content {
+  margin-top: 10px;
+}
+
+.footer-content a,
+.footer-content p {
+  display: block;
+  color: #bbb;
+  text-decoration: none;
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.footer-content a:hover {
+  color: #fff;
+}
+
+.newsletter {
+  display: flex;
+}
+
+.newsletter input {
+  padding: 8px;
+  border: none;
+  outline: none;
+  flex: 1;
+}
+
+.newsletter button {
+  background: #e91e63;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.footer-bottom {
+    /* border-top: 1px solid #333; */
+    text-align: center;
+    /* padding: 15px; */
+    font-size: 14px;
+    color: #bbb;
+    margin-top: 0px;
+    background-color: black;
+}
+
+.payment-icons i {
+  font-size: 24px;
+  margin: 0 5px;
+}
+
+    /* === Additions for mobile cart icon === */
+.cart-icon {
+  display: none;
+}
+.card {
+  position: relative;
+}
+
+@media (max-width: 600px) {
+      .offer { font-family: emoji; font-size: 13px; margin-top: 9px; }
+      .kids-section { height: 32px; }
+
+      .filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        padding: 5px;
+        background: #f9f9f9; /* optional: light background for mobile */
+      }
+      option{ font-size: 10px; }
+      .filter {
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        flex: 0 1 auto; /* don’t stretch too much */
+        min-width: auto;
+      }
+      .products {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+        gap: 12px; /* tighter spacing for mobile */
+      }
+      .card-img { height: 200px; } /* smaller image height for mobile */
+      .price {
+        flex-direction: column; /* stack current + old price neatly */
+        align-items: flex-start;
+      }
+
+  .footer-container {
+    flex-direction: column;
+  }
+
+
+
+  .footer-column.active .footer-content {
+    max-height: 500px; /* expand on toggle */
+  }
+
+  /* Product Cards - Mobile */
+  .card {
+    flex: 1 1 48%;
+    margin: 1%;
+    position: relative;
+  }
+
+.bag-btn {
+    display: none; /* hide Add to Cart button */
+  }
+
+  .card {
+    position: relative;
+  }
+
+  .cart-icon {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    padding: 6px 9px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .cart-icon:hover {
+    background: #444;
+  }
+
+
+      /* 🔽 NEW: mobile behavior */
+      .bag-btn { display:none; }          /* hide Add to Cart button on mobile */
+      .cart-icon-mobile { display:block; }/* show mobile cart icon */
+
+      .footer-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        border-bottom: 1px solid #444;
+        padding: 10px 0;
+        font-size: 15px;
+      }
+      .footer-container {
+    color: #fff;
+    padding: 0px 19px;
+    background-color: #000;
+}
+      .footer-column {
+    flex: 1 1 200px;
+    margin: 0px;
+}
+      .footer-content { display: none; padding: 5px 0 10px; }
+      .footer-panel.active .footer-content { display: block; }
+      .toggle-icon { font-size: 18px; transition: transform 0.3s; }
+      .footer-panel.active .toggle-icon { transform: rotate(45deg); /* turns + into × */ }
+    .footer-container {
+        flex-direction: row;
+        gap: 0px;
+    }
+    .footer-bottom {
+ 
+    text-align: center;
+    
+    font-size: 14px;
+    color: white;
+    margin-top: 0px;
+    background-color: black;
+}
+    }
+
+
 
 </style>
 </head>
@@ -247,270 +427,346 @@ font-size: 20px;
   </div>
 
   <!-- PRODUCTS  -->
-  <div class="wrap">
-    <div class="products">
-      <!-- Card 1 -->
-      <div class="card" data-price="4185" data-brand="Khaadi" data-fabric="Cotton" data-size="M" data-color="Gold" data-season="Summer" data-occasion="Casual" data-discount="55">
-        <img src="./media_image-65fd830a0f6e4e8297943618ccd929a7_62623f35-e2af-4cd8-b51f-913b126790fc.webp" alt="Golden Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 4,185</span>
-            <span class="old">PKR 9,299</span>
-          </div>
-       <button class="bag-btn add-to-cart"
-        data-name="Golden Kurta"
-        data-price="4185"
-        data-img="./media_image-65fd830a0f6e4e8297943618ccd929a7_62623f35-e2af-4cd8-b51f-913b126790fc.webp">
-  Add to Cart
-</button>
+<div class="wrap">
+  <div class="products">
+    <!-- Card 1 -->
+    <div class="card" data-price="4185" data-brand="Khaadi" data-fabric="Cotton" data-size="M" data-color="Gold" data-season="Summer" data-occasion="Casual" data-discount="55">
+      <img src="./media_image-65fd830a0f6e4e8297943618ccd929a7_62623f35-e2af-4cd8-b51f-913b126790fc.webp" alt="Golden Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Golden Kurta"
+            data-price="4185"
+            data-img="./media_image-65fd830a0f6e4e8297943618ccd929a7_62623f35-e2af-4cd8-b51f-913b126790fc.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 4,185</span>
+          <span class="old">PKR 9,299</span>
+        </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Golden Kurta"
+                data-price="4185"
+                data-img="./media_image-65fd830a0f6e4e8297943618ccd929a7_62623f35-e2af-4cd8-b51f-913b126790fc.webp">
+          Add to Cart
+        </button>
+      </div>
+    </div>
 
+    <!-- Card 2 -->
+    <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
+      <img src="./media_image-e42043a4097747b3909fe9b2672d0459_e9b83213-321a-4c17-845c-adb012bef8c8.webp" alt="Red Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Red Kurta"
+            data-price="8500"
+            data-img="./media_image-e42043a4097747b3909fe9b2672d0459_e9b83213-321a-4c17-845c-adb012bef8c8.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 8,500</span>
+          <span class="old">PKR 12,500</span>
         </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Red Kurta"
+                data-price="8500"
+                data-img="./media_image-e42043a4097747b3909fe9b2672d0459_e9b83213-321a-4c17-845c-adb012bef8c8.webp">
+          Add to Cart
+        </button>
       </div>
+    </div>
 
-      <!-- Card 2 -->
-        <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
-        <img src="./media_image-e42043a4097747b3909fe9b2672d0459_e9b83213-321a-4c17-845c-adb012bef8c8.webp" alt="Red Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 8,500</span>
-            <span class="old">PKR 12,500</span>
-          </div>
-          <button class="bag-btn add-to-cart"
-                  data-name="Red Kurta"
-                  data-price="8500"
-                  data-img="./media_image-e42043a4097747b3909fe9b2672d0459_e9b83213-321a-4c17-845c-adb012bef8c8.webp">
-            Add to Cart
-          </button>
+    <!-- Card 3 -->
+    <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
+      <img src="./Untitled-1_0008_3J1A4419.webp" alt="Red Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Red Kurta"
+            data-price="8500"
+            data-img="./Untitled-1_0008_3J1A4419.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 8,500</span>
+          <span class="old">PKR 12,500</span>
         </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Red Kurta"
+                data-price="8500"
+                data-img="./Untitled-1_0008_3J1A4419.webp">
+          Add to Cart
+        </button>
       </div>
+    </div>
 
-      <!-- Card 3 -->
-           <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
-        <img src="./Untitled-1_0008_3J1A4419.webp" alt="Red Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 8,500</span>
-            <span class="old">PKR 12,500</span>
-          </div>
-          <button class="bag-btn add-to-cart"
-                  data-name="Red Kurta"
-                  data-price="8500"
-                  data-img="./Untitled-1_0008_3J1A4419.webp">
-            Add to Cart
-          </button>
+    <!-- Card 4 -->
+    <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
+      <img src="./cropped_image-172312653117919_e8890470-1b1b-429b-8d51-d0d204ecdfe6.webp" alt="Red Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Red Kurta"
+            data-price="8500"
+            data-img="./cropped_image-172312653117919_e8890470-1b1b-429b-8d51-d0d204ecdfe6.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 8,500</span>
+          <span class="old">PKR 12,500</span>
         </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Red Kurta"
+                data-price="8500"
+                data-img=".cropped_image-172312653117919_e8890470-1b1b-429b-8d51-d0d204ecdfe6.webp">
+          Add to Cart
+        </button>
       </div>
+    </div>
 
-      <!-- Card 4 -->
-      <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
-        <img src="./cropped_image-172312653117919_e8890470-1b1b-429b-8d51-d0d204ecdfe6.webp" alt="Red Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 8,500</span>
-            <span class="old">PKR 12,500</span>
-          </div>
-          <button class="bag-btn add-to-cart"
-                  data-name="Red Kurta"
-                  data-price="8500"
-                  data-img=".cropped_image-172312653117919_e8890470-1b1b-429b-8d51-d0d204ecdfe6.webp">
-            Add to Cart
-          </button>
+    <!-- Card 5 -->
+    <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
+      <img src="./DSC00296-174777207100750_6116b02a-a0fb-40b5-ae78-5e36acb747ee.webp" alt="Red Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Red Kurta"
+            data-price="8500"
+            data-img="./DSC00296-174777207100750_6116b02a-a0fb-40b5-ae78-5e36acb747ee.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 8,500</span>
+          <span class="old">PKR 12,500</span>
         </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Red Kurta"
+                data-price="8500"
+                data-img="./DSC00296-174777207100750_6116b02a-a0fb-40b5-ae78-5e36acb747ee.webp">
+          Add to Cart
+        </button>
       </div>
- <!-- Card 5 -->
-      <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
-        <img src="./DSC00296-174777207100750_6116b02a-a0fb-40b5-ae78-5e36acb747ee.webp" alt="Red Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 8,500</span>
-            <span class="old">PKR 12,500</span>
-          </div>
-          <button class="bag-btn add-to-cart"
-                  data-name="Red Kurta"
-                  data-price="8500"
-                  data-img="./DSC00296-174777207100750_6116b02a-a0fb-40b5-ae78-5e36acb747ee.webp">
-            Add to Cart
-          </button>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
+      <img src="./3000000035666_3_1_-174782437980963_84f4d6ef-20c2-4d79-9987-f481949a9c37.webp" alt="Red Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Red Kurta"
+            data-price="8500"
+            data-img="./3000000035666_3_1_-174782437980963_84f4d6ef-20c2-4d79-9987-f481949a9c37.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 8,500</span>
+          <span class="old">PKR 12,500</span>
         </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Red Kurta"
+                data-price="8500"
+                data-img="./3000000035666_3_1_-174782437980963_84f4d6ef-20c2-4d79-9987-f481949a9c37.webp">
+          Add to Cart
+        </button>
       </div>
-       <!-- Card 6 -->
-      <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
-        <img src="./3000000035666_3_1_-174782437980963_84f4d6ef-20c2-4d79-9987-f481949a9c37.webp" alt="Red Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 8,500</span>
-            <span class="old">PKR 12,500</span>
-          </div>
-          <button class="bag-btn add-to-cart"
-                  data-name="Red Kurta"
-                  data-price="8500"
-                  data-img="./3000000035666_3_1_-174782437980963_84f4d6ef-20c2-4d79-9987-f481949a9c37.webp">
-            Add to Cart
-          </button>
+    </div>
+
+    <!-- Card 7 -->
+    <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
+      <img src="./cropped_image-173831954577888_267b6f88-ba9c-4f2e-ad3e-6c7d172c4c6a.webp" alt="Red Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Red Kurta"
+            data-price="8500"
+            data-img="./cropped_image-173831954577888_267b6f88-ba9c-4f2e-ad3e-6c7d172c4c6a.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 8,500</span>
+          <span class="old">PKR 12,500</span>
         </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Red Kurta"
+                data-price="8500"
+                data-img="./cropped_image-173831954577888_267b6f88-ba9c-4f2e-ad3e-6c7d172c4c6a.webp">
+          Add to Cart
+        </button>
       </div>
-       <!-- Card 7 -->
-      <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
-        <img src="./cropped_image-173831954577888_267b6f88-ba9c-4f2e-ad3e-6c7d172c4c6a.webp" alt="Red Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 8,500</span>
-            <span class="old">PKR 12,500</span>
-          </div>
-          <button class="bag-btn add-to-cart"
-                  data-name="Red Kurta"
-                  data-price="8500"
-                  data-img="./cropped_image-173831954577888_267b6f88-ba9c-4f2e-ad3e-6c7d172c4c6a.webp">
-            Add to Cart
-          </button>
+    </div>
+
+    <!-- Card 8 -->
+    <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
+      <img src="./3_0c0a2810-fc43-4d74-a434-fd8f6361c318.webp" alt="Red Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Red Kurta"
+            data-price="8500"
+            data-img="./3_0c0a2810-fc43-4d74-a434-fd8f6361c318.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 8,500</span>
+          <span class="old">PKR 12,500</span>
         </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Red Kurta"
+                data-price="8500"
+                data-img="./3_0c0a2810-fc43-4d74-a434-fd8f6361c318.webp">
+          Add to Cart
+        </button>
       </div>
-       <!-- Card 8 -->
-      <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
-        <img src="./3_0c0a2810-fc43-4d74-a434-fd8f6361c318.webp" alt="Red Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 8,500</span>
-            <span class="old">PKR 12,500</span>
-          </div>
-          <button class="bag-btn add-to-cart"
-                  data-name="Red Kurta"
-                  data-price="8500"
-                  data-img="./3_0c0a2810-fc43-4d74-a434-fd8f6361c318.webp">
-            Add to Cart
-          </button>
+    </div>
+
+    <!-- Card 9 -->
+    <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
+      <img src="./KHUWAB_MONOCHROME-_KURTA_01-174711950696682_3e40562a-f445-46fb-ae0f-0e5e4cc201bb.webp" alt="Red Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Red Kurta"
+            data-price="8500"
+            data-img="./KHUWAB_MONOCHROME-_KURTA_01-174711950696682_3e40562a-f445-46fb-ae0f-0e5e4cc201bb.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 8,500</span>
+          <span class="old">PKR 12,500</span>
         </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Red Kurta"
+                data-price="8500"
+                data-img="./KHUWAB_MONOCHROME-_KURTA_01-174711950696682_3e40562a-f445-46fb-ae0f-0e5e4cc201bb.webp">
+          Add to Cart
+        </button>
       </div>
-       <!-- Card 9 -->
-      <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
-        <img src="./KHUWAB_MONOCHROME-_KURTA_01-174711950696682_3e40562a-f445-46fb-ae0f-0e5e4cc201bb.webp" alt="Red Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 8,500</span>
-            <span class="old">PKR 12,500</span>
-          </div>
-          <button class="bag-btn add-to-cart"
-                  data-name="Red Kurta"
-                  data-price="8500"
-                  data-img="./KHUWAB_MONOCHROME-_KURTA_01-174711950696682_3e40562a-f445-46fb-ae0f-0e5e4cc201bb.webp">
-            Add to Cart
-          </button>
+    </div>
+
+    <!-- Card 10 -->
+    <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
+      <img src="./2R2A3374.webp" alt="Red Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Red Kurta"
+            data-price="8500"
+            data-img="./2R2A3374.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 8,500</span>
+          <span class="old">PKR 12,500</span>
         </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Red Kurta"
+                data-price="8500"
+                data-img="./2R2A3374.webp">
+          Add to Cart
+        </button>
       </div>
-       <!-- Card 10 -->
-      <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
-        <img src="./2R2A3374.webp" alt="Red Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 8,500</span>
-            <span class="old">PKR 12,500</span>
-          </div>
-          <button class="bag-btn add-to-cart"
-                  data-name="Red Kurta"
-                  data-price="8500"
-                  data-img="./2R2A3374.webp">
-            Add to Cart
-          </button>
+    </div>
+
+    <!-- Card 11 -->
+    <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
+      <img src="./0039_1V4A0034copy_01075a88-df4e-4982-b3a4-5cc97ab93f42.webp" alt="Red Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Red Kurta"
+            data-price="8500"
+            data-img="./0039_1V4A0034copy_01075a88-df4e-4982-b3a4-5cc97ab93f42.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 8,500</span>
+          <span class="old">PKR 12,500</span>
         </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Red Kurta"
+                data-price="8500"
+                data-img="./0039_1V4A0034copy_01075a88-df4e-4982-b3a4-5cc97ab93f42.webp">
+          Add to Cart
+        </button>
       </div>
-       <!-- Card 11 -->
-      <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
-        <img src="./0039_1V4A0034copy_01075a88-df4e-4982-b3a4-5cc97ab93f42.webp" alt="Red Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 8,500</span>
-            <span class="old">PKR 12,500</span>
-          </div>
-          <button class="bag-btn add-to-cart"
-                  data-name="Red Kurta"
-                  data-price="8500"
-                  data-img="./0039_1V4A0034copy_01075a88-df4e-4982-b3a4-5cc97ab93f42.webp">
-            Add to Cart
-          </button>
+    </div>
+
+    <!-- Card 12 -->
+    <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
+      <img src="./0020_53.webp" alt="Red Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Red Kurta"
+            data-price="8500"
+            data-img="./0020_53.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 8,500</span>
+          <span class="old">PKR 12,500</span>
         </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Red Kurta"
+                data-price="8500"
+                data-img="./0020_53.webp">
+          Add to Cart
+        </button>
       </div>
-       <!-- Card 12 -->
-      <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
-        <img src="./0020_53.webp" alt="Red Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 8,500</span>
-            <span class="old">PKR 12,500</span>
-          </div>
-          <button class="bag-btn add-to-cart"
-                  data-name="Red Kurta"
-                  data-price="8500"
-                  data-img="./0020_53.webp">
-            Add to Cart
-          </button>
+    </div>
+
+    <!-- Card 13 -->
+    <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
+      <img src="./large-_0007_3J1A4150_f345b89b-9896-4c97-ad9f-f7931152cd2f.webp" alt="Red Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Red Kurta"
+            data-price="8500"
+            data-img="./large-_0007_3J1A4150_f345b89b-9896-4c97-ad9f-f7931152cd2f.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 8,500</span>
+          <span class="old">PKR 12,500</span>
         </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Red Kurta"
+                data-price="8500"
+                data-img="./large-_0007_3J1A4150_f345b89b-9896-4c97-ad9f-f7931152cd2f.webp">
+          Add to Cart
+        </button>
       </div>
-       <!-- Card 13 -->
-      <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
-        <img src="./large-_0007_3J1A4150_f345b89b-9896-4c97-ad9f-f7931152cd2f.webp" alt="Red Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 8,500</span>
-            <span class="old">PKR 12,500</span>
-          </div>
-          <button class="bag-btn add-to-cart"
-                  data-name="Red Kurta"
-                  data-price="8500"
-                  data-img="./large-_0007_3J1A4150_f345b89b-9896-4c97-ad9f-f7931152cd2f.webp">
-            Add to Cart
-          </button>
+    </div>
+
+    <!-- Card 14 -->
+    <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
+      <img src="./cf4f0baede5e7cb67c0b486b14cd5d22.webp" alt="Red Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Red Kurta"
+            data-price="8500"
+            data-img="./cf4f0baede5e7cb67c0b486b14cd5d22.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 8,500</span>
+          <span class="old">PKR 12,500</span>
         </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Red Kurta"
+                data-price="8500"
+                data-img="./cf4f0baede5e7cb67c0b486b14cd5d22.webp">
+          Add to Cart
+        </button>
       </div>
-       <!-- Card 14 -->
-      <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
-        <img src="./cf4f0baede5e7cb67c0b486b14cd5d22.webp" alt="Red Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 8,500</span>
-            <span class="old">PKR 12,500</span>
-          </div>
-          <button class="bag-btn add-to-cart"
-                  data-name="Red Kurta"
-                  data-price="8500"
-                  data-img="./cf4f0baede5e7cb67c0b486b14cd5d22.webp">
-            Add to Cart
-          </button>
+    </div>
+
+    <!-- Card 15 -->
+    <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
+      <img src="./cropped_image-173979046604596_4872bdaa-ec88-4c79-8d75-249d3c499911.webp" alt="Red Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Red Kurta"
+            data-price="8500"
+            data-img="./cropped_image-173979046604596_4872bdaa-ec88-4c79-8d75-249d3c499911.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 8,500</span>
+          <span class="old">PKR 12,500</span>
         </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Red Kurta"
+                data-price="8500"
+                data-img="./cropped_image-173979046604596_4872bdaa-ec88-4c79-8d75-249d3c499911.webp">
+          Add to Cart
+        </button>
       </div>
-       <!-- Card 15 -->
-      <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
-        <img src="./cropped_image-173979046604596_4872bdaa-ec88-4c79-8d75-249d3c499911.webp" alt="Red Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 8,500</span>
-            <span class="old">PKR 12,500</span>
-          </div>
-          <button class="bag-btn add-to-cart"
-                  data-name="Red Kurta"
-                  data-price="8500"
-                  data-img="./cropped_image-173979046604596_4872bdaa-ec88-4c79-8d75-249d3c499911.webp">
-            Add to Cart
-          </button>
+    </div>
+
+    <!-- Card 16 -->
+    <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
+      <img src="./cropped_image-172318890531549_6de2cf17-2f25-45c0-9b94-ed97704bb088.webp" alt="Red Kurta">
+      <span class="cart-icon add-to-cart"
+            data-name="Red Kurta"
+            data-price="8500"
+            data-img="./cropped_image-172318890531549_6de2cf17-2f25-45c0-9b94-ed97704bb088.webp">🛒</span>
+      <div class="info">
+        <div class="price">
+          <span>PKR 8,500</span>
+          <span class="old">PKR 12,500</span>
         </div>
-      </div>
-       <!-- Card 16 -->
-      <div class="card" data-price="8500" data-brand="Limelight" data-fabric="Linen" data-size="S" data-color="Red" data-season="Autumn" data-occasion="Party" data-discount="32">
-        <img src="./cropped_image-172318890531549_6de2cf17-2f25-45c0-9b94-ed97704bb088.webp" alt="Red Kurta">
-        <div class="info">
-          <div class="price">
-            <span>PKR 8,500</span>
-            <span class="old">PKR 12,500</span>
-          </div>
-          <button class="bag-btn add-to-cart"
-                  data-name="Red Kurta"
-                  data-price="8500"
-                  data-img="./cropped_image-172318890531549_6de2cf17-2f25-45c0-9b94-ed97704bb088.webp">
-            Add to Cart
-          </button>
-        </div>
+        <button class="bag-btn add-to-cart"
+                data-name="Red Kurta"
+                data-price="8500"
+                data-img="./cropped_image-172318890531549_6de2cf17-2f25-45c0-9b94-ed97704bb088.webp">
+          Add to Cart
+        </button>
       </div>
     </div>
   </div>
+</div>
+
   
 
 
@@ -534,52 +790,97 @@ font-size: 20px;
       <button class="cart-checkout" type="button">Checkout</button>
     </div>
   </aside>
-    <footer>
-    <div class="footer-container">
-      <div class="footer-column">
-        <h4>Contact Us</h4>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indus</p>
-        <p><i class="fa fa-envelope"></i> wecare@villgusonline.pk</p>
-        <p><i class="fa fa-phone"></i> +92(0)42 111-738-245</p>
+ <footer>
+  <div class="footer-container">
+    <div class="footer-column footer-panel">
+      <h4 class="footer-heading">Get In Touch <span class="toggle-icon">+</span></h4>
+      <div class="footer-content">
+        <p>123 London High Street</p>
+        <p>London, W1A 1AA</p>
+        <p>+44 20 7946 0998</p>
+        <p>support@villgus.com</p>
       </div>
-      <div class="footer-column">
-        <h4>Customer Care</h4>
-        <a href="#">Exchange & Return Policy</a>
-        <a href="#">FAQs</a>
-        <a href="#">Contact Us</a>
-      </div>
-      <div class="footer-column">
-        <h4>Information</h4>
+    </div>
+
+    <div class="footer-column footer-panel">
+      <h4 class="footer-heading">Information <span class="toggle-icon">+</span></h4>
+      <div class="footer-content">
         <a href="#">About Us</a>
         <a href="#">Privacy Policy</a>
-        <a href="#">Payments</a>
-        <a href="#">Store Locator</a>
-        <a href="#">Fabric Glossary</a>
-        <a href="#">Blogs</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">FAQs</a>
       </div>
-      <div class="footer-column">
-        <h4>Newsletter Signup</h4>
-        <p>Subscribe to our Newsletter for Exclusive Updates</p>
-        <form class="newsletter" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-          <input type="email" placeholder="Your email address" aria-label="Email address" required>
+    </div>
+
+    <div class="footer-column footer-panel">
+      <h4 class="footer-heading">Customer Services <span class="toggle-icon">+</span></h4>
+      <div class="footer-content">
+        <a href="#">Contact Us</a>
+        <a href="#">Shipping & Returns</a>
+        <a href="#">Order Tracking</a>
+        <a href="#">Size Guide</a>
+      </div>
+    </div>
+
+    <div class="footer-column footer-panel">
+      <h4 class="footer-heading">Newsletter Signup <span class="toggle-icon">+</span></h4>
+      <div class="footer-content">
+        <form class="newsletter">
+          <input type="email" placeholder="Enter your email">
           <button type="submit">Subscribe</button>
         </form>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© Made by Vishah Gull</p>
-      <div class="payment-icons" aria-label="Payment methods">
-        <i class="fa fa-cc-visa" aria-hidden="true"></i>
-        <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
-        <i class="fa fa-cc-paypal" aria-hidden="true"></i>
-        <i class="fa fa-cc-amex" aria-hidden="true"></i>
-      </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Villgus Clothing Mall. All rights reserved.</p>
+    <div class="payment-icons">
+      <i class="fab fa-cc-visa"></i>
+      <i class="fab fa-cc-mastercard"></i>
+      <i class="fab fa-cc-paypal"></i>
     </div>
-  </footer>
+  </div>
+</footer>
+
   <!-- JS (single jQuery import) -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" defer></script>
   <script src="js/owl.carousel.min.js" defer></script>
+  <script>
+
+document.querySelectorAll('.footer-heading').forEach(heading => {
+  heading.addEventListener('click', () => {
+    const parent = heading.parentElement;
+    parent.classList.toggle('active');
+
+    const icon = heading.querySelector('.toggle-icon');
+    icon.textContent = parent.classList.contains('active') ? '-' : '+';
+  });
+});
+
+// Mobile Cart Icon Click (trigger add to cart)
+document.querySelectorAll('.cart-icon-mobile').forEach(icon => {
+  icon.addEventListener('click', () => {
+    const card = icon.closest('.card');
+    const btn = card.querySelector('.btn');
+    if (btn) {
+      btn.click(); // trigger same behavior as desktop add to cart
+    }
+  });
+});
+</script>
+  <!-- your other scripts here -->
+
+  <script>
+  document.querySelectorAll('.cart-icon').forEach(icon => {
+    icon.addEventListener('click', () => {
+      icon.click(); // triggers add-to-cart (if event delegation exists)
+    });
+  });
+  </script>
+</body>
+</html>
 
 </body>
 </html>

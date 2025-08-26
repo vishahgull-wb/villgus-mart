@@ -64,12 +64,94 @@
   .add-cart { background:#111; color:#fff; }
   .buy-now { background:#ff4a4a; color:#fff; }
   .note { font-size:13px; margin-top:12px; color:#555; }
+    @media (max-width: 600px) {
+      .wear {
+    font-size: 11px;
+      }
+    .festive-cloth {
+    height: 49px;
+    text-align: center;
+}
+   .festive-cloth h1 {
+    margin: 0;
+    padding: 20px 0;
+    font-size: 21px;
+}
+    .filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        padding: 5px;
+        background: #f9f9f9;
+    }
+        .filter {
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        flex: 0 1 auto;
+        min-width: auto;
+        }
+        .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    .product-info {
+    padding: 0px 0px;
+    text-align: center;
+}
+.product-info h3 {
+    margin: 19px 0;
+    font-size: 12px;
+}
+.product-info p {
+    margin: 0 0px 10px;
+    font-size: 15px;
+    margin-top: -17px;
+}
+.add-cart {
+    background-color: #f5e0d3;
+    color: #000;
+    padding: 4px 4px;
+    border: none;
+    border-radius: 27px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+footer {
+    background: #222;
+    color: #fff;
+    padding: 0px 16px 20px;
+}
+ .footer-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        border-bottom: 1px solid #444;
+        padding: 10px 0;
+        font-size: 15px;
+      }
+      .footer-content { display: none; padding: 5px 0 10px; }
+      .footer-panel.active .footer-content { display: block; }
+      .toggle-icon { font-size: 18px; transition: transform 0.3s; }
+      .footer-panel.active .toggle-icon { transform: rotate(45deg); /* turns + into × */ }
+      .footer-container {
+        flex-direction: row;
+        gap: 0px;
+        margin-top: 26px;
+      }
+
+      }
 </style>
 </head>
 <body>
 
 <div class="festive-cloth">
-  <h1>Festive Wear Collection</h1>
+  <h1>Shadi Wear Collection</h1>
 </div>
 
 <div class="filter-bar">
@@ -397,48 +479,58 @@
     <button style="margin-top:10px;padding:10px 20px;background:#111;color:#fff;border:none;border-radius:8px;cursor:pointer;">Submit</button>
   </div>
 </div>
-  <footer>
-    <div class="footer-container">
-      <div class="footer-column">
-        <h4>Contact Us</h4>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indus</p>
-        <p><i class="fa fa-envelope"></i> wecare@villgusonline.pk</p>
-        <p><i class="fa fa-phone"></i> +92(0)42 111-738-245</p>
+ <footer>
+  <div class="footer-container">
+    <div class="footer-column footer-panel">
+      <h4 class="footer-heading">Get In Touch <span class="toggle-icon">+</span></h4>
+      <div class="footer-content">
+        <p>123 London High Street</p>
+        <p>London, W1A 1AA</p>
+        <p>+44 20 7946 0998</p>
+        <p>support@villgus.com</p>
       </div>
-      <div class="footer-column">
-        <h4>Customer Care</h4>
-        <a href="#">Exchange & Return Policy</a>
-        <a href="#">FAQs</a>
-        <a href="#">Contact Us</a>
-      </div>
-      <div class="footer-column">
-        <h4>Information</h4>
+    </div>
+
+    <div class="footer-column footer-panel">
+      <h4 class="footer-heading">Information <span class="toggle-icon">+</span></h4>
+      <div class="footer-content">
         <a href="#">About Us</a>
         <a href="#">Privacy Policy</a>
-        <a href="#">Payments</a>
-        <a href="#">Store Locator</a>
-        <a href="#">Fabric Glossary</a>
-        <a href="#">Blogs</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">FAQs</a>
       </div>
-      <div class="footer-column">
-        <h4>Newsletter Signup</h4>
-        <p>Subscribe to our Newsletter for Exclusive Updates</p>
-        <form class="newsletter" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-          <input type="email" placeholder="Your email address" aria-label="Email address" required>
+    </div>
+
+    <div class="footer-column footer-panel">
+      <h4 class="footer-heading">Customer Services <span class="toggle-icon">+</span></h4>
+      <div class="footer-content">
+        <a href="#">Contact Us</a>
+        <a href="#">Shipping & Returns</a>
+        <a href="#">Order Tracking</a>
+        <a href="#">Size Guide</a>
+      </div>
+    </div>
+
+    <div class="footer-column footer-panel">
+      <h4 class="footer-heading">Newsletter Signup <span class="toggle-icon">+</span></h4>
+      <div class="footer-content">
+        <form class="newsletter">
+          <input type="email" placeholder="Enter your email">
           <button type="submit">Subscribe</button>
         </form>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© Made by Vishah Gull</p>
-      <div class="payment-icons" aria-label="Payment methods">
-        <i class="fa fa-cc-visa" aria-hidden="true"></i>
-        <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
-        <i class="fa fa-cc-paypal" aria-hidden="true"></i>
-        <i class="fa fa-cc-amex" aria-hidden="true"></i>
-      </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Villgus Clothing Mall. All rights reserved.</p>
+    <div class="payment-icons">
+      <i class="fab fa-cc-visa"></i>
+      <i class="fab fa-cc-mastercard"></i>
+      <i class="fab fa-cc-paypal"></i>
     </div>
-  </footer>
+  </div>
+</footer>
 <script>
   function openModal(product) {
     const modal = document.getElementById("productModal");
@@ -461,6 +553,44 @@
     }
   }
 </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Footer accordion (unchanged)
+    const panels = document.querySelectorAll(".footer-panel");
+    panels.forEach(panel => {
+      const heading = panel.querySelector(".footer-heading");
+      heading.addEventListener("click", () => {
+        panel.classList.toggle("active");
+      });
+    });
 
+    // 🔽 NEW: Make the mobile cart icon behave like the Add to Cart button
+    document.querySelectorAll(".card").forEach(card => {
+      const icon = card.querySelector(".cart-icon-mobile");
+      const button = card.querySelector(".add-to-cart");
+      if (icon && button) {
+        icon.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          // Trigger the same action as the desktop button
+          button.click();
+        });
+      }
+    });
+
+    // If you already have an add-to-cart handler elsewhere, it will be invoked by button.click() above.
+    // If not, here's a lightweight default handler so you see it working:
+    document.querySelectorAll(".add-to-cart").forEach(btn => {
+      if (!btn.dataset.bound) {
+        btn.dataset.bound = "1";
+        btn.addEventListener("click", function(ev){
+          // Replace this alert with your real cart logic as needed
+          // You can access product details via DOM if required
+          alert("Added to cart!");
+        });
+      }
+    });
+  });
+  </script>
 </body>
 </html>
